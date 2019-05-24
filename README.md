@@ -1,0 +1,2 @@
+# cmdbuildpy
+CMDBuild API Client 
