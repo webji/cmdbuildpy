@@ -32,13 +32,11 @@ class Classes(Request):
         return self.get_classes()
 
     def get_class(self) -> ClassWithFullDetails:
-        data = self.ret['data']
-        self.validate_type(data, dict)
+        data = self.validate_data_type(dict)
         return ClassWithFullDetails().from_dict(data)
         
     def get_classes(self) -> list:
-        data = self.ret['data']
-        self.validate_type(data, list)
+        data = self.validate_data_type(data, list)
         class_list = []
         for class_dict in data:
             class_basic = ClassWithBasicDetails().from_dict(class_dict)

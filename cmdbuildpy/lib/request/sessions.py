@@ -45,7 +45,6 @@ class Sessions(Request):
     
 
     def get_session(self) -> Session:
-        data = self.ret['data']
-        self.validate_type(data, dict)
+        data = self.validate_data_type(dict)
         return Session().from_dict(data)
         

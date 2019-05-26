@@ -6,7 +6,7 @@ from cmdbuildpy.lib.cmdbuild import CMDBuild
 from cmdbuildpy.lib.request import Request
 from cmdbuildpy.lib.util import Logger, API_VERSION
 from cmdbuildpy.lib.client import Client
-from cmdbuildpy.lib.model import Session
+from cmdbuildpy.lib.model import Session, Card
 
 def cmdbuild():
     host = 'http://localhost:38080'
@@ -34,13 +34,36 @@ def main():
     # ret = client.classes().read(id='User')
     # print(ret)
 
+    # classes cards read
+    # ret = client.classes_cards().read_all(classId='PC')
+    # print(ret)
+
+    # classes cards read
+    # ret = client.classes_cards().read(classId='PC', cardId='518')
+    # print(ret)
+    # c = ret
+    # c.values['_id'] = None
+
+    # classes cards create
+    # ret = client.classes_cards().create(classId='PC', card=card)
+    # print(ret)
+
+    # classes cards update
+    # client.classes_cards().update(classId='PC', cardId='1518', card=c)
+
+    # classes cards delete
+    # client.classes_cards().delete(classId='PC', cardId='1522')
+    # ret = client.classes_cards().read_all(classId='PC')
+    # print(ret)
+
     # lookuptypes read_all
-    # ret = client.lookuptypes().read_all()
+    # ret = client.lookuptypes().read_all(classId='PC', cardId='1518')
     # print(ret)
 
     # lookupttypes read
     # ret = client.lookuptypes().read(id='RFC priority')
     # print(ret)
+
 
 
 if __name__ == "__main__":

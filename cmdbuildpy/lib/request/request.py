@@ -74,10 +74,11 @@ class Request(object):
         return self.__request()
 
     
-    def validate_type(self, data, *args):
+    def validate_data_type(self, *args):
+        data = self.ret['data']
         if not isinstance(data, *args):
             raise requests.RequestException(f'Not Valid types for {data} and {args}')
-        
+        return data
 
     def get_ret(self):
         return self.ret

@@ -4,7 +4,7 @@
 
 
 from .cmdbuild import CMDBuild
-from .request import Sessions, Classes, LookupTypes
+from .request import Sessions, Classes, ClassesCards, LookupTypes
 
 class Client(object):
     
@@ -19,6 +19,9 @@ class Client(object):
     
     def classes(self):
         return Classes(self.cmdbuild)
+
+    def classes_cards(self):
+        return ClassesCards(self.cmdbuild)
 
     def lookuptypes(self):
         return LookupTypes(self.cmdbuild)

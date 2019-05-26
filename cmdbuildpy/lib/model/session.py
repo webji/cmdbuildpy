@@ -2,11 +2,6 @@
 # Email: willji@outlook.com
 # coding=utf-8
 
-import json
-from collections import OrderedDict
-from decimal import Decimal
-from datetime import datetime, date
-
 from cmdbuildpy.lib.util import Logger
 from . import ModelWithStringId
 

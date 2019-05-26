@@ -32,13 +32,11 @@ class LookupTypes(Request):
         return self.get_lookuptypedetails()
 
     def get_lookuptypedetail(self) -> LookupTypeDetail:
-        data = self.ret['data']
-        self.validate_type(data, dict)
+        data = self.validate_data_type(dict)
         return LookupTypeDetail().from_dict(data)
         
     def get_lookuptypedetails(self) -> list:
-        data = self.ret['data']
-        self.validate_type(data, list)
+        data = self.validate_data_type(list)
         type_list = []
         for type_dict in data:
             type_basic = LookupTypeDetail().from_dict(type_dict)
