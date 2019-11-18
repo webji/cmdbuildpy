@@ -8,6 +8,8 @@ from cmdbuildpy.lib.util import Logger, API_VERSION
 from cmdbuildpy.lib.client import Client
 from cmdbuildpy.lib.model import Session, Card
 
+logger = Logger(__name__).get_logger()
+
 def cmdbuild():
     host = 'http://localhost:38080'
     username = 'admin'
@@ -21,7 +23,7 @@ def main():
     cmdb = cmdbuild()
     client = Client(cmdb)
     client.connect()
-    
+
     # sessions read
     # ret = client.sessions().read(id=cmdb.session_id)
     # print(ret)
@@ -39,22 +41,22 @@ def main():
     # print(ret)
 
     # classes cards read
-    # ret = client.classes_cards().read(classId='PC', cardId='518')
-    # print(ret)
-    # c = ret
-    # c.values['_id'] = None
+    ret = client.classes_cards().read(classId='PC', cardId='518')
+    print(ret)
+    c = ret
+    c.values.delegate['_id'] = None
 
     # classes cards create
-    # ret = client.classes_cards().create(classId='PC', card=card)
+    # ret = client.classes_cards().create(classId='PC', card=c)
     # print(ret)
 
     # classes cards update
-    # client.classes_cards().update(classId='PC', cardId='1518', card=c)
+    client.classes_cards().update(classId='PC', cardId='1530', card=c)
 
     # classes cards delete
     # client.classes_cards().delete(classId='PC', cardId='1522')
-    # ret = client.classes_cards().read_all(classId='PC')
-    # print(ret)
+    ret = client.classes_cards().read_all(classId='PC')
+    print(ret)
 
     # lookuptypes read_all
     # ret = client.lookuptypes().read_all(classId='PC', cardId='1518')

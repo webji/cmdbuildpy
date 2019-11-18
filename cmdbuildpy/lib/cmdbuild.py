@@ -16,6 +16,8 @@ class CMDBuild(object):
         self.version = version
         self.session_id = None
        
+    def __repr__(self):
+        return f'<CMDBuild: host={self.host}, username={self.username}, password={self.password}, version={self.version}, session_id={self.session_id}>'
 
     def url(self, path):
         host = self.host.strip('/')

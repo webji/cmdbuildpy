@@ -11,6 +11,9 @@ class Client(object):
     def __init__(self, cmdbuild: CMDBuild):
         self.cmdbuild = cmdbuild
 
+    def __repr__(self):
+        return f'<Client: cmdbuild={self.cmdbuild}>'
+
     def connect(self):
         self.cmdbuild.session_id = self.sessions().create()._id      
 

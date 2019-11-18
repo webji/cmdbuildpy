@@ -47,6 +47,7 @@ class Request(object):
         func = getattr(requests, self.method.value.lower())
         params = self.params
         data = self.__json_data()
+        logger.debug(f'Request: [{self.method}][{path}][{params}][{data}]')
         res = func(path, data=data, params=params, headers=self.headers)
         try:
             ret = res.json()
@@ -55,7 +56,7 @@ class Request(object):
 
         self.ret = ret
         
-        if res.status_code != 200:
+        if res.status_code not in [200, 204]:
             logger.error(f'Request: {self}, Response: {res}')
             res.raise_for_status()
         

@@ -5,4 +5,7 @@
 from . import Model
 
 class Values(Model):
-    delegate: dict
+    delegate: dict = None
+
+    def __repr__(self):
+        return f'<Values: delegate={self.delegate}>'

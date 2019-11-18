@@ -13,7 +13,7 @@ class Logger(object):
         """
         :param name:    日志记录的用例名
         """
-        logging.basicConfig(filename='logging.conf')
+        logging.config.fileConfig(fname='logging.conf')
         self.logger = logging.getLogger(name)
         
     def get_logger(self):

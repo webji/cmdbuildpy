@@ -3,7 +3,7 @@
 # Author: Will<willji@outlook.com>
 
 from . import Request
-from cmdbuildpy.lib.model import Card
+from cmdbuildpy.lib.model import Card, Values
 from cmdbuildpy.lib.util import HTTP_METHOD
 
 class ClassesCards(Request):
@@ -14,7 +14,7 @@ class ClassesCards(Request):
     def create(self, classId: str, card: Card) -> int:
         self.method = HTTP_METHOD.POST
         self.path += f'/{classId}/cards'
-        self.data = card.__dict__
+        self.data = card.as_dict()
         self.request()
         return self.get_card_id()
 
@@ -40,7 +40,7 @@ class ClassesCards(Request):
     def update(self, classId: str, cardId: str, card: Card):
         self.method = HTTP_METHOD.PUT
         self.path += f'/{classId}/cards/{cardId}'
-        self.data = card.__dict__
+        self.data = card.as_dict()
         self.request()
         
     def delete(self, classId: str, cardId: str):
@@ -54,7 +54,7 @@ class ClassesCards(Request):
         card_list = []
         for card_dict in data:
             card = Card()
-            card.values = card_dict
+            card.values.delegate = card_dict
             card_list.append(card)
         return card_list
 
@@ -62,7 +62,7 @@ class ClassesCards(Request):
     def get_card(self):
         data = self.validate_data_type(dict)
         card = Card()
-        card.values = data
+        card.values.delegate = data
         return card
     
     def get_card_id(self):
